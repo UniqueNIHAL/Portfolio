@@ -1,52 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Loader, Github, Linkedin, Globe, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Globe, ExternalLink, ArrowUpRight, MessageSquareText } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError('');
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 1500);
-  };
+  const quickActions = [
+    {
+      title: 'Send an email',
+      description: 'Best for collaborations, freelance work, and project discussions.',
+      href: 'mailto:nihalhu05@gmail.com',
+      icon: Mail
+    },
+    {
+      title: 'Message on LinkedIn',
+      description: 'Ideal for professional networking, referrals, and outreach.',
+      href: 'https://linkedin.com/in/nihalhu',
+      icon: Linkedin
+    },
+    {
+      title: 'Explore GitHub',
+      description: 'Browse code, projects, and practical work samples.',
+      href: 'https://github.com/uniquenihal',
+      icon: Github
+    }
+  ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-900 text-white">
+    <section id="contact" className="py-20 bg-gray-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(79,70,229,0.16),transparent_30%)]"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-16 relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,14 +38,14 @@ const Contact: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <div className="h-1 w-20 bg-indigo-600 mx-auto mb-6"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Interested in collaboration or have a project in mind? Let's connect and discuss how we can work together.
+            Interested in collaboration or have a project in mind? Reach out directly through the channels below.
           </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="max-w-6xl mx-auto bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-700 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
             <motion.div 
-              className="bg-indigo-900 p-8 md:p-12"
+              className="bg-indigo-950/90 p-8 md:p-12"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -70,12 +53,13 @@ const Contact: React.FC = () => {
             >
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <p className="mb-8 text-gray-300">
-                Feel free to reach out through any of the following methods. I'll get back to you as soon as possible.
+                I prefer direct communication over dead forms. If you want to collaborate, discuss an internship,
+                or talk through an idea, email is the fastest route.
               </p>
               
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-indigo-800 p-3 rounded-lg mr-4">
+                <div className="flex items-start rounded-xl border border-indigo-800/70 bg-indigo-900/40 p-4">
+                  <div className="bg-indigo-800 p-3 rounded-lg mr-4 shrink-0">
                     <Mail size={20} />
                   </div>
                   <div>
@@ -89,8 +73,8 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
-                  <div className="bg-indigo-800 p-3 rounded-lg mr-4">
+                <div className="flex items-start rounded-xl border border-indigo-800/70 bg-indigo-900/40 p-4">
+                  <div className="bg-indigo-800 p-3 rounded-lg mr-4 shrink-0">
                     <Phone size={20} />
                   </div>
                   <div>
@@ -104,8 +88,8 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
-                  <div className="bg-indigo-800 p-3 rounded-lg mr-4">
+                <div className="flex items-start rounded-xl border border-indigo-800/70 bg-indigo-900/40 p-4">
+                  <div className="bg-indigo-800 p-3 rounded-lg mr-4 shrink-0">
                     <MapPin size={20} />
                   </div>
                   <div>
@@ -114,8 +98,8 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-indigo-800 p-3 rounded-lg mr-4">
+                <div className="flex items-start rounded-xl border border-indigo-800/70 bg-indigo-900/40 p-4">
+                  <div className="bg-indigo-800 p-3 rounded-lg mr-4 shrink-0">
                     <Globe size={20} />
                   </div>
                   <div>
@@ -133,14 +117,23 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-              <div className="mt-12">
-                <h4 className="font-semibold mb-4">Connect with me</h4>
+              <div className="mt-12 rounded-2xl border border-indigo-800/70 bg-indigo-900/50 p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-indigo-800 p-3 rounded-lg">
+                    <MessageSquareText size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Response Preference</h4>
+                    <p className="text-sm text-indigo-200/80">Email first, LinkedIn next.</p>
+                  </div>
+                </div>
                 <div className="flex space-x-4">
                   <a 
                     href="https://github.com/uniquenihal" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-indigo-800 p-3 rounded-full hover:bg-indigo-700 transition-colors"
+                    aria-label="GitHub"
                   >
                     <Github size={20} />
                   </a>
@@ -149,6 +142,7 @@ const Contact: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-indigo-800 p-3 rounded-full hover:bg-indigo-700 transition-colors"
+                    aria-label="LinkedIn"
                   >
                     <Linkedin size={20} />
                   </a>
@@ -157,99 +151,55 @@ const Contact: React.FC = () => {
             </motion.div>
             
             <motion.div 
-              className="p-8 md:p-12"
+              className="p-8 md:p-12 flex flex-col justify-between bg-gray-800/60"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-2xl font-bold text-gray-200 mb-6">Send a Message</h3>
-              
-              {submitSuccess && (
-                <div className="mb-6 p-4 bg-green-900/50 text-green-400 rounded-lg border border-green-700">
-                  Thank you for your message! I'll get back to you soon.
-                </div>
-              )}
-              
-              {submitError && (
-                <div className="mb-6 p-4 bg-red-900/50 text-red-400 rounded-lg border border-red-700">
-                  {submitError}
-                </div>
-              )}
-              
-              <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-white"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-gray-300 mb-2">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-white"
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="subject" className="block text-gray-300 mb-2">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formState.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-white"
-                    required
-                  />
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-gray-300 mb-2">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formState.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent text-white"
-                    required
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader size={20} className="animate-spin mr-2" /> 
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={20} className="mr-2" /> 
-                      Send Message
-                    </>
-                  )}
-                </button>
-              </form>
+              <div>
+                <p className="text-sm uppercase tracking-[0.24em] text-indigo-300 mb-3">Direct Contact</p>
+                <h3 className="text-3xl font-bold text-gray-100 mb-4">No placeholder form, just real ways to reach me.</h3>
+                <p className="text-gray-400 leading-relaxed mb-8 max-w-lg">
+                  The old form did not send anywhere, so it has been removed. These actions take visitors straight
+                  to the channels that actually work.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                {quickActions.map((action) => {
+                  const Icon = action.icon;
+
+                  return (
+                    <a
+                      key={action.title}
+                      href={action.href}
+                      target={action.href.startsWith('http') ? '_blank' : undefined}
+                      rel={action.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="group flex items-start justify-between gap-4 rounded-2xl border border-gray-700 bg-gray-900/70 p-5 hover:border-indigo-500 hover:bg-gray-900 transition-all"
+                    >
+                      <div className="flex gap-4">
+                        <div className="bg-indigo-900 p-3 rounded-xl text-indigo-300 group-hover:bg-indigo-800 transition-colors">
+                          <Icon size={20} />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-100 mb-1">{action.title}</h4>
+                          <p className="text-sm text-gray-400">{action.description}</p>
+                        </div>
+                      </div>
+                      <ArrowUpRight size={18} className="text-gray-500 group-hover:text-indigo-300 transition-colors shrink-0 mt-1" />
+                    </a>
+                  );
+                })}
+              </div>
+
+              <div className="rounded-2xl border border-gray-700 bg-gradient-to-br from-indigo-950/60 to-gray-900 p-6">
+                <p className="text-sm uppercase tracking-[0.2em] text-indigo-300 mb-3">Availability</p>
+                <p className="text-gray-200 font-medium mb-2">Open to internships, collaborations, and AI/cloud projects.</p>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  If you are reaching out for product, research, or engineering work, include a short brief in the email subject line for a faster response.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>

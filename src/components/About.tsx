@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Laptop, Lightbulb, Rocket, Brain, Cloud, Shield, Terminal } from 'lucide-react';
+import { Brain, Cloud, Shield, Terminal, Languages } from 'lucide-react';
 
 const About: React.FC = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6 }
     }
@@ -15,7 +15,7 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial="hidden"
           whileInView="visible"
@@ -27,7 +27,7 @@ const About: React.FC = () => {
         </motion.div>
 
         <div className="flex flex-col md:flex-row gap-10 items-center">
-          <motion.div 
+          <motion.div
             className="md:w-1/2"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -44,15 +44,15 @@ const About: React.FC = () => {
               <pre className="text-sm font-mono text-gray-300 whitespace-pre-wrap">
 {`{
   "name": "Nihal H U",
-  "role": "Software Developer",
   "location": "Bangalore, India",
+  "education": "BCA in Cloud Technology and Information Security",
   "interests": [
-    "Cloud Computing",
-    "Cybersecurity",
-    "AI/ML",
-    "Web Development"
+    "MCP",
+    "LLMs",
+    "Generative AI",
+    "Cloud",
+    "Cybersecurity"
   ],
-  "education": "BCA in Cloud Technology",
   "languages": [
     "English",
     "Hindi",
@@ -63,7 +63,7 @@ const About: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="md:w-1/2"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -71,8 +71,11 @@ const About: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="space-y-6">
-              <p className="text-gray-300 text-lg">
-                I'm a passionate software developer specializing in cloud technology and information security. Currently pursuing my BCA, I combine academic excellence with practical experience in various tech domains.
+              <p className="text-gray-300 text-lg leading-relaxed">
+                I’m a technology-focused developer with a strong interest in cloud systems, cybersecurity,
+                and Generative AI. I am currently pursuing a BCA in Cloud Technology and Information
+                Security at Jain (Deemed-to-be University), while building hands-on experience through
+                internships, research, beta testing, and project development.
               </p>
 
               <div className="grid grid-cols-2 gap-6">
@@ -81,8 +84,8 @@ const About: React.FC = () => {
                     <Cloud size={20} className="text-indigo-400" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-200">Cloud Expert</h4>
-                    <p className="text-sm text-gray-400">GCP & Cloud Solutions</p>
+                    <h4 className="font-semibold text-gray-200">Cloud</h4>
+                    <p className="text-sm text-gray-400">GCP & Azure</p>
                   </div>
                 </div>
 
@@ -91,8 +94,8 @@ const About: React.FC = () => {
                     <Shield size={20} className="text-indigo-400" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-200">Security Focus</h4>
-                    <p className="text-sm text-gray-400">Cybersecurity Specialist</p>
+                    <h4 className="font-semibold text-gray-200">Security</h4>
+                    <p className="text-sm text-gray-400">Cybersecurity</p>
                   </div>
                 </div>
 
@@ -101,8 +104,8 @@ const About: React.FC = () => {
                     <Brain size={20} className="text-indigo-400" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-200">AI Enthusiast</h4>
-                    <p className="text-sm text-gray-400">ML & Computer Vision</p>
+                    <h4 className="font-semibold text-gray-200">AI</h4>
+                    <p className="text-sm text-gray-400">LLMs & MCP</p>
                   </div>
                 </div>
 
@@ -111,19 +114,19 @@ const About: React.FC = () => {
                     <Terminal size={20} className="text-indigo-400" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-200">Full Stack Dev</h4>
-                    <p className="text-sm text-gray-400">Web & Application Development</p>
+                    <h4 className="font-semibold text-gray-200">Development</h4>
+                    <p className="text-sm text-gray-400">Backend & Web</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 p-4 bg-gray-800 rounded-lg border border-gray-700">
-                <h4 className="font-semibold text-gray-200 mb-2">Current Focus</h4>
+                <h4 className="font-semibold text-gray-200 mb-2">Highlights</h4>
                 <ul className="list-disc list-inside text-gray-300 space-y-1">
-                  <li>Exploring advanced cloud architectures</li>
-                  <li>Contributing to open-source projects</li>
-                  <li>Developing AI-powered solutions</li>
-                  <li>Enhancing cybersecurity knowledge</li>
+                  <li>Office Bearer of ACM Student Chapter (Tech Team)</li>
+                  <li>Recognized for hackathon and innovation achievements</li>
+                  <li>Experienced in AI backend API development and GenAI workflows</li>
+                  <li>Strong communication in English, Hindi, and Kannada</li>
                 </ul>
               </div>
             </div>

@@ -12,11 +12,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -32,7 +28,7 @@ const Navbar: React.FC = () => {
     { name: 'Experience', target: 'experience' },
     { name: 'Projects', target: 'projects' },
     { name: 'Education', target: 'education' },
-    { name: 'Contact', target: 'contact' },
+    { name: 'Contact', target: 'contact' }
   ];
 
   return (
@@ -43,7 +39,6 @@ const Navbar: React.FC = () => {
             <h1 className="text-xl font-bold text-indigo-600">Nihal H U</h1>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex space-x-6">
               {navLinks.map((link) => (
@@ -61,27 +56,25 @@ const Navbar: React.FC = () => {
               ))}
             </div>
             <div className="flex space-x-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <a href="https://github.com/uniquenihal" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors" aria-label="GitHub">
                 <Github size={20} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <a href="https://linkedin.com/in/nihalhu" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
-              <a href="mailto:contact@example.com" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <a href="mailto:nihalhu05@gmail.com" className="text-gray-700 hover:text-indigo-600 transition-colors" aria-label="Email">
                 <Mail size={20} />
               </a>
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-gray-700 hover:text-indigo-600 transition-colors">
+            <button onClick={toggleMenu} className="text-gray-700 hover:text-indigo-600 transition-colors" aria-label="Toggle menu">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-4">
@@ -101,13 +94,13 @@ const Navbar: React.FC = () => {
               ))}
             </div>
             <div className="flex space-x-4 mt-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <a href="https://github.com/uniquenihal" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors" aria-label="GitHub">
                 <Github size={20} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <a href="https://linkedin.com/in/nihalhu" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600 transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
-              <a href="mailto:contact@example.com" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <a href="mailto:nihalhu05@gmail.com" className="text-gray-700 hover:text-indigo-600 transition-colors" aria-label="Email">
                 <Mail size={20} />
               </a>
             </div>

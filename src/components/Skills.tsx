@@ -1,40 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Cloud, Shield, Brain, Terminal } from 'lucide-react';
+import { Code, Database, Cloud, Shield, Brain, Terminal, Languages } from 'lucide-react';
 
 interface Skill {
   name: string;
   level: number;
-  category: 'languages' | 'cloud' | 'security' | 'ai' | 'tools' | 'other';
+  category: 'languages' | 'cloud' | 'security' | 'ai' | 'tools' | 'soft';
 }
 
 const Skills: React.FC = () => {
   const skills: Skill[] = [
-    // Languages & Frameworks
-    { name: 'Python', level: 90, category: 'languages' },
-    { name: 'Java', level: 85, category: 'languages' },
-    { name: 'C++', level: 80, category: 'languages' },
-    { name: 'HTML/CSS', level: 85, category: 'languages' },
-    
-    // Cloud & Infrastructure
-    { name: 'Google Cloud Platform', level: 88, category: 'cloud' },
-    { name: 'Docker', level: 82, category: 'cloud' },
-    { name: 'Kubernetes', level: 75, category: 'cloud' },
-    
-    // Security
-    { name: 'Cybersecurity', level: 85, category: 'security' },
-    { name: 'Digital Forensics', level: 80, category: 'security' },
-    { name: 'Network Security', level: 78, category: 'security' },
-    
-    // AI/ML
-    { name: 'Computer Vision', level: 88, category: 'ai' },
-    { name: 'NLP', level: 85, category: 'ai' },
-    { name: 'TensorFlow', level: 80, category: 'ai' },
-    
-    // Tools & Technologies
+    { name: 'Python', level: 95, category: 'languages' },
+    { name: 'HTML/CSS', level: 90, category: 'languages' },
+    { name: 'JavaScript', level: 80, category: 'languages' },
+    { name: 'Java', level: 78, category: 'languages' },
+
+    { name: 'Google Cloud Platform', level: 90, category: 'cloud' },
+    { name: 'Microsoft Azure', level: 85, category: 'cloud' },
+    { name: 'FastAPI', level: 88, category: 'cloud' },
+    { name: 'PostgreSQL', level: 84, category: 'cloud' },
+    { name: 'MySQL', level: 82, category: 'cloud' },
+
+    { name: 'Cybersecurity', level: 88, category: 'security' },
+    { name: 'Computer Networks', level: 82, category: 'security' },
+    { name: 'Operating Systems', level: 80, category: 'security' },
+    { name: 'Information Security', level: 86, category: 'security' },
+
+    { name: 'Agentic AI', level: 92, category: 'ai' },
+    { name: 'MCP', level: 90, category: 'ai' },
+    { name: 'LLMs', level: 90, category: 'ai' },
+    { name: 'NLP', level: 88, category: 'ai' },
+    { name: 'Computer Vision', level: 86, category: 'ai' },
+    { name: 'Generative AI', level: 90, category: 'ai' },
+
     { name: 'Git', level: 90, category: 'tools' },
-    { name: 'MySQL', level: 85, category: 'tools' },
-    { name: 'Postman', level: 88, category: 'tools' }
+    { name: 'Postman', level: 88, category: 'tools' },
+    { name: 'Ubuntu', level: 84, category: 'tools' },
+    { name: 'WordPress', level: 76, category: 'tools' },
+
+    { name: 'Time Management', level: 92, category: 'soft' },
+    { name: 'Leadership', level: 88, category: 'soft' },
+    { name: 'Problem Solving', level: 94, category: 'soft' },
+    { name: 'Collaboration', level: 90, category: 'soft' },
+    { name: 'Accountability', level: 90, category: 'soft' }
   ];
 
   const containerVariants = {
@@ -42,7 +50,7 @@ const Skills: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.08
       }
     }
   };
@@ -68,6 +76,8 @@ const Skills: React.FC = () => {
         return <Brain className="text-indigo-400" />;
       case 'tools':
         return <Terminal className="text-indigo-400" />;
+      case 'soft':
+        return <Languages className="text-indigo-400" />;
       default:
         return <Database className="text-indigo-400" />;
     }
@@ -76,7 +86,7 @@ const Skills: React.FC = () => {
   return (
     <section id="skills" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,20 +96,20 @@ const Skills: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
           <div className="h-1 w-20 bg-indigo-600 mx-auto mb-6"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            My technical toolkit spans multiple domains, from cloud computing to artificial intelligence,
-            backed by strong programming fundamentals and practical experience.
+            My technical toolkit spans AI, cloud, backend development, and cybersecurity with a strong
+            emphasis on practical implementation and problem solving.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {['languages', 'cloud', 'security', 'ai', 'tools'].map((category) => (
-            <motion.div 
+          {['languages', 'cloud', 'security', 'ai', 'tools', 'soft'].map((category) => (
+            <motion.div
               key={category}
               variants={itemVariants}
               className="bg-gray-800 rounded-lg p-6 border border-gray-700"
@@ -113,7 +123,7 @@ const Skills: React.FC = () => {
 
               <div className="space-y-4">
                 {skills
-                  .filter(skill => skill.category === category)
+                  .filter((skill) => skill.category === category)
                   .map((skill) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-2">
@@ -121,12 +131,12 @@ const Skills: React.FC = () => {
                         <span className="text-indigo-400">{skill.level}%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div 
+                        <motion.div
                           className="h-2 rounded-full bg-indigo-600"
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
                           viewport={{ once: true }}
-                          transition={{ duration: 1, ease: "easeOut" }}
+                          transition={{ duration: 1, ease: 'easeOut' }}
                         ></motion.div>
                       </div>
                     </div>
@@ -136,30 +146,38 @@ const Skills: React.FC = () => {
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="mt-12 bg-gray-800 rounded-lg p-6 border border-gray-700"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-xl font-bold mb-6">Additional Competencies</h3>
+          <h3 className="text-xl font-bold mb-6">Core Competencies</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              "Problem Solving",
-              "Team Collaboration",
-              "Project Management",
-              "Technical Writing",
-              "Code Review",
-              "System Design",
-              "Agile Methodology",
-              "Research"
+              'Python',
+              'Data Analysis & Visualization',
+              'IBM SPSS',
+              'Agentic AI',
+              'MCP',
+              'FastAPI',
+              'uv',
+              'NLP',
+              'PostgreSQL',
+              'MySQL',
+              'Google Cloud Platform',
+              'Microsoft Azure',
+              'Ubuntu',
+              'Postman',
+              'Git',
+              'Computer Vision'
             ].map((skill) => (
-              <div 
+              <div
                 key={skill}
                 className="bg-gray-700 rounded-lg p-4 text-center hover:bg-indigo-900 transition-colors"
               >
-                <span className="text-gray-300">{skill}</span>
+                <span className="text-gray-300 text-sm">{skill}</span>
               </div>
             ))}
           </div>

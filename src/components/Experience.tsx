@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, ExternalLink, Code, Server, Shield, Brain } from 'lucide-react';
+import { Briefcase, Calendar, Code, Server, Shield, Brain } from 'lucide-react';
 
 interface Experience {
   title: string;
@@ -8,63 +8,58 @@ interface Experience {
   period: string;
   description: string[];
   technologies: string[];
-  type: 'internship' | 'work' | 'research';
   icon: 'code' | 'server' | 'shield' | 'brain';
 }
 
 const Experience: React.FC = () => {
   const experiences: Experience[] = [
     {
-      title: "Web Developer Intern",
-      company: "KSDA, Government of Karnataka",
-      period: "Sept 2024 – Jan 2025",
+      title: 'AI Backend Developer Intern',
+      company: 'The Nirmata',
+      period: 'May 2025 – Aug 2025',
       description: [
-        "Collaborated and developed the organization's website and query chatbot",
-        "Implemented responsive design principles for optimal user experience",
-        "Integrated AI-powered chatbot for automated query resolution"
+        'Developing backend APIs for an AI content creation tool.',
+        'Working with MCP, LLM-based workflows, audio, image, and video generation pipelines.',
+        'Integrating Hugging Face and diffusers-based generation capabilities into backend services.'
       ],
-      technologies: ["React", "Node.js", "AI/ML", "Responsive Design"],
-      type: "internship",
-      icon: "code"
+      technologies: ['Python', 'FastAPI', 'MCP', 'LLMs', 'Hugging Face', 'Diffusers'],
+      icon: 'brain'
     },
     {
-      title: "Software Engineer Intern",
-      company: "Gorai Technology Services",
-      period: "June 2024 - July 2024",
+      title: 'Web Developer Intern',
+      company: 'KSDA, Government of Karnataka',
+      period: 'Sept 2024 – Jan 2025',
       description: [
-        "Multiple micro services tested and fixed in alignment with organization goals",
-        "Implemented and maintained RESTful APIs using Spring Boot",
-        "Conducted thorough testing and debugging of microservices"
+        'Collaborated in developing the organization website and query chatbot.',
+        'Built a responsive frontend experience focused on usability and accessibility.',
+        'Worked on AI-assisted query handling to improve user support flows.'
       ],
-      technologies: ["Java", "Spring Boot", "Postman", "Microservices"],
-      type: "internship",
-      icon: "server"
+      technologies: ['HTML/CSS', 'WordPress', 'Web Development', 'Chatbot'],
+      icon: 'code'
     },
     {
-      title: "Digital Forensics Research Intern",
-      company: "Sanmathi Forensics Lab",
-      period: "June 2023 - July 2023",
+      title: 'Beta Testing (UX)',
+      company: 'Fampay & Minecraft Server',
+      period: '2024 – Present',
       description: [
-        "Explored digital and Windows forensics",
-        "Practiced on TryHackMe's Windows Forensics 1",
-        "Conducted analysis on Digital Forensics Case B4DM755"
+        'Beta tested Fampay pre-release products and reported bugs for product improvement.',
+        'Conducted Minecraft server UX testing and reported over 100 bugs across years of testing.',
+        'Provided structured feedback to improve reliability, usability, and user experience.'
       ],
-      technologies: ["Digital Forensics", "Windows Forensics", "Security Tools"],
-      type: "research",
-      icon: "shield"
+      technologies: ['Bug Reporting', 'UX Testing', 'QA', 'Documentation'],
+      icon: 'server'
     },
     {
-      title: "Beta Testing (UX)",
-      company: "Fampay & Minecraft Server",
-      period: "June 2022 - Present",
+      title: 'Research & Cybersecurity Exposure',
+      company: 'Self-driven learning & labs',
+      period: '2023 – Present',
       description: [
-        "Beta Testing for Fampay since 2024, finding bugs and testing pre-release software",
-        "Beta Testing for Minecraft Server since 2020, reported over 100 bugs",
-        "Provided detailed feedback for product improvement"
+        'Explored digital forensics, computer networks, information security, and system analysis.',
+        'Built practical understanding of secure application design and technical risk assessment.',
+        'Continuously expanded knowledge in cloud, AI, and security integrations.'
       ],
-      technologies: ["Testing", "Bug Reporting", "UX Analysis", "Documentation"],
-      type: "work",
-      icon: "brain"
+      technologies: ['Cybersecurity', 'Networks', 'OS', 'Information Security'],
+      icon: 'shield'
     }
   ];
 
@@ -105,7 +100,7 @@ const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -115,21 +110,20 @@ const Experience: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h2>
           <div className="h-1 w-20 bg-indigo-600 mx-auto mb-6"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            My professional journey encompasses various roles in software development,
-            research, and quality assurance, providing me with a well-rounded perspective
-            in technology.
+            My practical experience spans AI backend development, web projects, and quality assurance,
+            blending technical execution with product and user-focused thinking.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="space-y-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {experiences.map((exp, index) => (
-            <motion.div 
+          {experiences.map((exp) => (
+            <motion.div
               key={exp.title + exp.company}
               variants={itemVariants}
               className="bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-indigo-600 transition-colors"
@@ -144,23 +138,23 @@ const Experience: React.FC = () => {
                     <p className="text-indigo-400">{exp.company}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center text-gray-400">
                   <Calendar size={16} className="mr-2" />
                   <span>{exp.period}</span>
                 </div>
               </div>
-              
+
               <ul className="list-disc list-inside mb-4 text-gray-300 space-y-2">
                 {exp.description.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>
-              
+
               <div className="flex flex-wrap gap-2 mt-4">
-                {exp.technologies.map(tech => (
-                  <span 
-                    key={tech} 
+                {exp.technologies.map((tech) => (
+                  <span
+                    key={tech}
                     className="bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full text-sm"
                   >
                     {tech}
